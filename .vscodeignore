@@ -1,0 +1,6 @@
+**/.git/**
+**/.vscode/**
+**/terminals/**
+**/*.log
+**/*.vsix
+
