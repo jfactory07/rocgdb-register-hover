@@ -2,16 +2,16 @@
   "name": "rocgdb-register-hover",
   "displayName": "rocgdb Register Hover",
   "description": "Hover AMDGPU assembly registers (SGPR/VGPR) and show values via rocgdb for the current stopped lane/wavefront.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "jfactory07",
   "license": "MIT",
-  "homepage": "https://github.com/REPLACE_ME/rocgdb-register-hover",
+  "homepage": "https://github.com/jfactory07/rocgdb-register-hover",
   "repository": {
     "type": "git",
-    "url": "https://github.com/REPLACE_ME/rocgdb-register-hover.git"
+    "url": "https://github.com/jfactory07/rocgdb-register-hover.git"
   },
   "bugs": {
-    "url": "https://github.com/REPLACE_ME/rocgdb-register-hover/issues"
+    "url": "https://github.com/jfactory07/rocgdb-register-hover/issues"
   },
   "keywords": [
     "rocgdb",
