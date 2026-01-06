@@ -7,6 +7,10 @@ This is a small VS Code extension that shows AMDGPU SGPR/VGPR values when hoveri
 - Hover symbolic registers like `s[sgprStreamKIter]` by resolving `.set/.equ` definitions in the current assembly file
 - Works with **active `cppdbg`** rocgdb sessions (recommended), or with a spawned `rocgdb` MI process
 
+### Install (VS Code Marketplace)
+- VS Code Extensions: search **"rocgdb Register Hover"** → Install
+- CLI: `code --install-extension jfactory07.rocgdb-register-hover`
+
 ### Install (dev)
 - Open this folder in VS Code
 - Press `F5` to launch an Extension Development Host
