@@ -862,6 +862,7 @@ function buildAsmSymbolEnvUpTo(document, uptoLine) {
     const line = stripAsmComments(raw).trim();
     if (!line) continue;
 
+    // FW TODO: sp3 'var x =' and 'x = ' syntax
     let m = line.match(/^\s*(?:[A-Za-z_]\w*:\s*)?\.(?:set|equ|equiv)\s+([A-Za-z_]\w*)\s*,\s*(.+)\s*$/);
     if (!m) m = line.match(/^\s*([A-Za-z_]\w*)\s*=\s*(.+)\s*$/);
     if (!m) continue;
@@ -924,6 +925,7 @@ function extractRegisterAt(document, position) {
   const window = line.slice(left, right);
   const cursorInWindow = col - left;
 
+  // FW TODO: add a/acc accvgpr pattern
   // Find nearest match that contains cursor.
   // Support:
   //  - s13 / v0
@@ -1050,6 +1052,7 @@ async function tryReadRegisterViaPrint(client, regName) {
     variants.push(`$${regName}`); // $s75 / $v0
     if (regName[0] === 's') variants.push(`$sgpr${regName.slice(1)}`);
     if (regName[0] === 'v') variants.push(`$vgpr${regName.slice(1)}`);
+    // FW TODO: add accvgpr
   } else {
     variants.push(`$${regName}`);
   }
@@ -1646,7 +1649,8 @@ function activate(context) {
               hoverCopyCache.set(copyId, { ts: Date.now(), text: `Data type: ${dt}\n${reg.raw || reg.name}\n(unresolved)` });
               return new vscode.Hover(md);
             }
-            if (names.length === 1) {
+            // FW TODO: handle accvgpr hover
+            if (names.length === 1) { 
               const r = await readVgpr(b, names[0]);
               const md = new vscode.MarkdownString();
               md.appendMarkdown(mdHeader.value);
@@ -1750,7 +1754,8 @@ function activate(context) {
     vscode.languages.registerHoverProvider(
       [
         { scheme: 'file', pattern: '**/*.{s,S}' },
-        { scheme: 'file', pattern: '**/*.asm' }
+        { scheme: 'file', pattern: '**/*.asm' },
+        { scheme: 'file', pattern: '**/*.sp3' }
       ],
       hoverProvider
     )
